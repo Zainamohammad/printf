@@ -56,7 +56,7 @@ int _printf(const char *format, ...)
 			{
 				s = va_arg(args, char *);
 				write(1, s, _strlen(s));
-				i = i + _strlen(s);
+				i = i + _strlen(s) - 1;
 			}
 			if (*format == 'd' || *format == 'i')
 				i = i + print_int(args) - 1;
