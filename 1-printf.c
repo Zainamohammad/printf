@@ -58,6 +58,8 @@ int _printf(const char *format, ...)
 				write(1, s, _strlen(s));
 				i = i + _strlen(s);
 			}
+			if (*format == 'd' || *format == 'i')
+				i = i + print_int(args) - 1;
 			++i;
 		}
 	}
