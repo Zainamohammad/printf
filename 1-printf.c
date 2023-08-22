@@ -1,21 +1,5 @@
 #include "main.h"
 /**
- * _strlen - a function that prints the length of
- * a string
- *
- * @s: the string the length of which is to be calculated
- *
- * Return: the length of the string
- */
-int _strlen(char *s)
-{
-	int i, count = 0;
-
-	for (i = 0; s[i] != '\0'; ++i)
-		++count;
-	return (count);
-}
-/**
  * _printf - a function that produces output according
  * to a format
  *
@@ -27,7 +11,6 @@ int _printf(const char *format, ...)
 {
 	int i = 0;
 	int ch;
-	char *s;
 	va_list args;
 
 	if (format == NULL)
@@ -38,37 +21,20 @@ int _printf(const char *format, ...)
 	for (; *format != '\0'; format++)
 	{
 		if (*format != '%')
-		{
-			write(1, format, 1);
-			++i;
-		}
+			i = i + _putchar(48 + *format);
 		else
 		{
 			format++;
 			if (*format == '%')
-				write(1, format, 1);
+				i = i + _putchar('%');
 			if (*format == 'c')
-			{
-				ch = va_arg(args, int);
-				write(1, &ch, 1);
-			}
+				i = i + print_c(args);
 			if (*format == 's')
-			{
-				s = va_arg(args, char *);
-				if (s == NULL)
-					s = "(null)";
-				write(1, s, _strlen(s));
-				i = i + _strlen(s) - 1;
-			}
+				i = i + print_s(args);
 			if (*format == 'd' || *format == 'i')
-				i = i + print_int(args) - 1;
+				i = i + print_int(args);
 			else
-			{
-				write(1, --format, 1);
-				write(1, ++format, 1);
-				++i;
-			}
-			++i;
+				i = i + _putchar('%') + _putchar(48 + *format);
 		}
 	}
 
