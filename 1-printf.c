@@ -55,6 +55,8 @@ int _printf(const char *format, ...)
 			if (*format == 's')
 			{
 				s = va_arg(args, char *);
+				if (s == NULL)
+					s = "(null)";
 				write(1, s, _strlen(s));
 				i = i + _strlen(s) - 1;
 			}
