@@ -12,32 +12,23 @@ int print_int(va_list args)
 	unsigned int num, q, x = 1;
 
 	ch = va_arg(args, int);
-	if (ch == 0)
+	if (ch < 0)
 	{
-		_putchar(48);
-		++i;
+		i = i + _putchar('-');
+		num = ch * (-1);
 	}
-	if (ch != 0)
-	{
-		if (ch < 0)
-		{
-			_putchar('-');
-			num = ch * (-1);
-			++i;
-		}
-		else
-			num = ch;
+	else
+		num = ch;
 
-		for (; num / x != 0; ++i)
-			x = x * 10;
-		x = x / 10;
-		for (; x; x = x / 10)
-		{
-			q = num % x;
-			num = num / x;
-			_putchar(48 + num);
-			num = q;
-		}
+	for (; num / x > 9; ++i)
+		x = x * 10;
+	++i;
+	for (; x; x = x / 10)
+	{
+		q = num % x;
+		num = num / x;
+		_putchar(48 + num);
+		num = q;
 	}
 	return (i);
 }
