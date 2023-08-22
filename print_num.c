@@ -42,7 +42,7 @@ int print_int(va_list args)
 		for (; num / x != 0; ++i)
 			x = x * 10;
 		x = x / 10;
-		for (; x; x = x / 10 )
+		for (; x; x = x / 10)
 		{
 			q = num % x;
 			num = num / x;
