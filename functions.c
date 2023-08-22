@@ -24,10 +24,10 @@ int print_s(va_list arg)
 {
         char *s;
 
-        s = va_arg(args, char *);
-				if (s == NULL)
-					s = "(null)";
-				write(1, s, _strlen(s));
+        s = va_arg(arg, char *);
+	if (s == NULL)
+	s = "(null)";
+	write(1, s, _strlen(s));
         return (_strlen(s));
 }
 /**
@@ -39,8 +39,8 @@ int print_c(va_list arg)
 {
         char ch;
 
-        ch = va_arg(args, int);
-				write(1, &ch, 1);
+        ch = va_arg(arg, int);
+	write(1, &ch, 1);
         return (1);
 }
 /**

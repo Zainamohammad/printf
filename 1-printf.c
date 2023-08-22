@@ -10,31 +10,29 @@
 int _printf(const char *format, ...)
 {
 	int i = 0;
-	int ch;
 	va_list args;
-
-	if (format == NULL)
-		return (-1);
 
 	va_start(args, format);
 
+	if (format == NULL)
+		return (-1);
 	for (; *format != '\0'; format++)
 	{
 		if (*format != '%')
-			i = i + _putchar(48 + *format);
+			i = i + _putchar(*format);
 		else
 		{
 			format++;
 			if (*format == '%')
-				i = i + _putchar('%');
-			if (*format == 'c')
+				i = i + _putchar(*format);
+			else if (*format == 'c')
 				i = i + print_c(args);
-			if (*format == 's')
+			else if (*format == 's')
 				i = i + print_s(args);
-			if (*format == 'd' || *format == 'i')
+			else if (*format == 'd' || *format == 'i')
 				i = i + print_int(args);
 			else
-				i = i + _putchar('%') + _putchar(48 + *format);
+				i = i + _putchar('%') + _putchar(*format);
 		}
 	}
 
