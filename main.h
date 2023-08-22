@@ -1,4 +1,4 @@
-#ifndef MY_HEADER
+fndef MY_HEADER
 #define MY_HEADER
 #include <limits.h>
 #include <stdlib.h>
