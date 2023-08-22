@@ -17,34 +17,39 @@ int _strlen(char *s)
 }
 /**
  * print_s - a function to print a string
+ *
  * @arg: a list of arguments
+ *
  * Return: returns the number of printed characters
  */
 int print_s(va_list arg)
 {
-        char *s;
+	char *s;
 
-        s = va_arg(arg, char *);
+	s = va_arg(arg, char *);
 	if (s == NULL)
-	s = "(null)";
+		s = "(null)";
 	write(1, s, _strlen(s));
-        return (_strlen(s));
+	return (_strlen(s));
 }
 /**
  * print_c - a function to print a character argument
+ *
  * @arg: a list of arguments
+ *
  * Return: 1
  */
 int print_c(va_list arg)
 {
-        char ch;
+	char ch;
 
-        ch = va_arg(arg, int);
+	ch = va_arg(arg, int);
 	write(1, &ch, 1);
-        return (1);
+	return (1);
 }
 /**
  * _putchar - writes the character c to stdout
+ *
  * @c: The character to print
  *
  * Return:1
