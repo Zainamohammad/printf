@@ -60,6 +60,12 @@ int _printf(const char *format, ...)
 			}
 			if (*format == 'd' || *format == 'i')
 				i = i + print_int(args) - 1;
+			else
+			{
+				write(1, --format, 1);
+				write(1, ++format, 1);
+				++i;
+			}
 			++i;
 		}
 	}
